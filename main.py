@@ -40,4 +40,7 @@ def parse_nexus():
         print("Downloading",filename)
         fetch_url(uri,filename)
 
-parse_nexus()
+def upload_nexus(repo_url, filename, username, password):
+    files = {'file': open(filename, 'rb')}
+    full_url=repo_url + filename
+    requests.post(full_url, files=files, auth=(username, password))
